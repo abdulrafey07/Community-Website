@@ -1,0 +1,144 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sec1 {
+  background-color: #20456B; 
+  height: 50vh;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #20456B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Nav Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  gap: 20%;
+}
+
+.nav-links li {
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s;
+  
+}
+
+.nav-links li:hover {
+  color: #cbd5e1; /* Soft hover */
+}
+
+/* Login Button */
+.loginBtn .login {
+  background-color: #3651a7;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.loginBtn .login:hover {
+  background-color: #20456B;
+}
+
+.tagline{
+  margin-top: 50px;         
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.tagline h1{
+    padding-top: 6.5%;
+    font-size: 2.5 rem;
+}
+
+.twobtns{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 5%;
+    margin-top: 5%;
+}
+
+.btn1{
+  background-color: #3651a7;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 540;
+}
+
+.btn2{
+  background-color: #3651a7;
+  color: white;
+  border: none;
+  padding: 20px 60px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 540;
+}
+
+@media (max-width: 600px) {
+  .sec2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sec2{
+    padding: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    /* align-items: center; */
+    gap: 10% 0%;
+    background-color: #e3e6ea;
+}
+
+
+.op{
+    height: 100px;
+    width: 70%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #000000 solid 0px;
+    border-radius: 6px;
+    box-shadow: #b6bdd2 0px 0px 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.op:hover{transform: scale(1.02);
+  box-shadow: #8a94ad 0px 0px 15px;
+  }
+
