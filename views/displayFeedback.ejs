@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Feedback</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Feedbacks</title>
 </head>
-
 <body>
-    <div>
-    <h2>Your Valueable Feedbacks!</h2>
-    <p>Name: <%=feedbackData.name %></p>
-    <p>Number: <%=feedbackData.number %></p>
-    <p>Rating: <%=feedbackData.rating %></p>
-    
-    </div>
+  <h1>All User Feedbacks</h1>
+  <% if (feedbackList.length === 0) { %>
+    <p>No feedbacks submitted yet.</p>
+  <% } else { %>
+    <ul>
+      <% feedbackList.forEach(feedback => { %>
+        <li>
+          <p><strong>Name:</strong> <%= feedback.name %></p>
+          <p><strong>Number:</strong> <%= feedback.number %></p>
+          <p><strong>Rating:</strong> <%= feedback.rating %></p>
+          <p><strong>Message:</strong> <%= feedback.message %></p>
+          <hr/>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
 </body>
 </html>

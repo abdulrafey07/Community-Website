@@ -10,33 +10,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
+
+let feedbackList = [];
+
 app.get("/feedback", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "feedback.html"));
 });
 
 
 
-let feedbackList = [  // this will store all feedbacks in memory
-  {
-    name: "xyz",
-    number: "1234567890",
-    message: "hi",
-    rating: "Good",
-  }
-];
 
-
-
-// app.post("/feedback", (req, res)=> {
-//     const feedbackData = {
-//         name: req.body.name,
-//         number: req.body.number,
-//         message: req.body.message, 
-//         rating: req.body.rating,
-//     };    
-//     feedbackData.push({name, number, message, rating});
-//     res.render("displayFeedback", {feedbackData});
-// });
+ 
 
 app.post("/feedback", (req, res) => {
   const newFeedback = {
@@ -46,9 +30,12 @@ app.post("/feedback", (req, res) => {
     rating: req.body.rating,
   };
 
-  feedbackList.push(newFeedback); // ✅ Add new feedback to array
+  feedbackList.push(newFeedback);
+  res.redirect("/all-feedbacks");
+});
 
-  res.render("displayFeedback", { feedbackData: newFeedback }); // send one entry for display
+app.get("/all-feedbacks", (req, res) => {
+  res.render("allFeedbacks", { feedbackList });
 });
 
 app.listen(port, () => {
