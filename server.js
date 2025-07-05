@@ -14,6 +14,14 @@ app.get("/feedback", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "feedback.html"));
 });
 
+let feedbackData = [
+{
+    name: "xyz",
+    number: "1234567890",
+    message: "hi",
+    rating: "Good",
+}
+];
 
 
 
@@ -24,6 +32,7 @@ app.post("/feedback", (req, res)=> {
         message: req.body.message, 
         rating: req.body.rating,
     };    
+    feedbackData.push({name, number, message, rating});
     res.render("displayFeedback", {feedbackData});
 });
 
@@ -31,18 +40,3 @@ app.listen(port, () => {
     console.log("server running on local host http://localhost:3000");
 });
 
-// let feedback = document.querySelector(".feedback-form");
-// feedback.addEventListener("submit", (e)=> {
-//     e.preventDefault();
-//     let name = document.getElementById("name").value;
-//     let number = document.getElementById("number").value;
-//     let message = document.getElementById("message").value;
-//     let rating = document.getElementById("rating").value;
-
-//     let feedbackData = [
-//         {name: name,
-//         email: email,
-//         message: message
-//         },
-//     ];
-// });
