@@ -14,26 +14,41 @@ app.get("/feedback", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "feedback.html"));
 });
 
-let feedbackData = [
-{
+
+
+let feedbackList = [  // this will store all feedbacks in memory
+  {
     name: "xyz",
     number: "1234567890",
     message: "hi",
     rating: "Good",
-}
+  }
 ];
 
 
 
-app.post("/feedback", (req, res)=> {
-    const feedbackData = {
-        name: req.body.name,
-        number: req.body.number,
-        message: req.body.message, 
-        rating: req.body.rating,
-    };    
-    feedbackData.push({name, number, message, rating});
-    res.render("displayFeedback", {feedbackData});
+// app.post("/feedback", (req, res)=> {
+//     const feedbackData = {
+//         name: req.body.name,
+//         number: req.body.number,
+//         message: req.body.message, 
+//         rating: req.body.rating,
+//     };    
+//     feedbackData.push({name, number, message, rating});
+//     res.render("displayFeedback", {feedbackData});
+// });
+
+app.post("/feedback", (req, res) => {
+  const newFeedback = {
+    name: req.body.name,
+    number: req.body.number,
+    message: req.body.message, 
+    rating: req.body.rating,
+  };
+
+  feedbackList.push(newFeedback); // ✅ Add new feedback to array
+
+  res.render("displayFeedback", { feedbackData: newFeedback }); // send one entry for display
 });
 
 app.listen(port, () => {
