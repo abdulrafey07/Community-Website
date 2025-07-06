@@ -35,7 +35,7 @@ app.post("/feedback", (req, res) => {
 });
 
 app.get("/all-feedbacks", (req, res) => {
-  res.render("allFeedbacks", { feedbackList });
+  res.render("displayFeedback", { feedbackList });
 });
 
 app.listen(port, () => {
