@@ -1,33 +1,33 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>All Feedbacks</title>
-    </head>
-    <body style="background-color: #c1c0d8;">
-    <h1 style="text-align: center;">All User Feedbacks</h1>
-    <hr>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>All Feedbacks</title>
+        </head>
+        <body style="background-color: #c1c0d8;">
+        <h1 style="text-align: center;">All User Feedbacks</h1>
+        <hr>
 
 
-    <div style="text-align: center;">
-        <% if (feedbackList.length === 0) { %>
-        <p>No feedbacks submitted yet.</p>
-    <% } else { %>
-        <ul>
-        <% feedbackList.forEach(feedback => { %>
-            <li>
-            <p><strong>Name:</strong> <%= feedback.name %></p>
-            <p><strong>Number:</strong> <%= feedback.number %></p>
-            <p><strong>Rating:</strong> <%= feedback.rating %></p>
-            <p><strong>Message:</strong> <%= feedback.message %></p>
-            <hr/>
-            </li>
-        <% }) %>
-        </ul>
-    <% } %>
-       </div>
-    </body>
-    </html>
+        <div style="text-align: center;">
+            <% if (feedbackList.length === 0) { %>
+            <p>No feedbacks submitted yet.</p>
+        <% } else { %>
+            <ul style="list-style: none;">
+            <% feedbackList.forEach(feedback => { %>
+                <li>
+                <p><strong>Name:</strong> <%= feedback.name %></p>
+                <p><strong>Number:</strong> <%= feedback.number %></p>
+                <p><strong>Rating:</strong> <%= feedback.rating %></p>
+                <p><strong>Message:</strong> <%= feedback.message %></p>
+                <hr/>
+                </li>
+            <% }) %>
+            </ul>
+        <% } %>
+        </div>
+        </body>
+        </html>
 
 
