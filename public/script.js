@@ -38,11 +38,9 @@ footerContent.forEach( (e)=> {
 });
 
 
-
-// Complaint form handling (resolve page only)
-const complaintForm = document.querySelector(".resolve-form");
-if (complaintForm) {
-  complaintForm.addEventListener("submit", async (e) => {
+const form = document.querySelector(".resolve-form");
+if (form) {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const name = document.getElementById("name").value;
@@ -53,26 +51,67 @@ if (complaintForm) {
       const response = await fetch("https://community-website-gch9.onrender.com/api/complaints", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, contact, description })
+        body: JSON.stringify({ name, contact, description }),
       });
 
       const result = await response.json();
 
       const box = document.getElementById("responseBox");
+
       if (response.ok) {
         box.innerHTML = `
           <p style="color: green; font-weight: bold;">✅ Complaint submitted successfully!</p>
           <p><strong>Ticket ID:</strong> ${result.ticketId}</p>
-          <img src="${result.qrCode}" alt="QR Code" style="width:150px;" />
+          <img src="${result.qrCode}" alt="QR Code" style="width:150px;">
         `;
       } else {
         box.innerHTML = `<p style="color: red;">Error: ${result.error || 'Unknown error'}</p>`;
       }
     } catch (err) {
-      document.getElementById("responseBox").innerHTML = `<p style="color: red;">Network or server error.</p>`;
+      console.error("Error submitting complaint:", err);
+      document.getElementById("responseBox").innerHTML = `<p style="color: red;">❌ Network or server error.</p>`;
     }
   });
 }
+
+
+
+
+
+// Complaint form handling (resolve page only)
+// const complaintForm = document.querySelector(".resolve-form");
+// if (complaintForm) {
+//   complaintForm.addEventListener("submit", async (e) => {
+//     e.preventDefault();
+
+//     const name = document.getElementById("name").value;
+//     const contact = document.getElementById("number").value;
+//     const description = document.getElementById("message").value;
+
+//     try {
+//       const response = await fetch("https://community-website-gch9.onrender.com/api/complaints", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ name, contact, description })
+//       });
+
+//       const result = await response.json();
+
+//       const box = document.getElementById("responseBox");
+//       if (response.ok) {
+//         box.innerHTML = `
+//           <p style="color: green; font-weight: bold;">✅ Complaint submitted successfully!</p>
+//           <p><strong>Ticket ID:</strong> ${result.ticketId}</p>
+//           <img src="${result.qrCode}" alt="QR Code" style="width:150px;" />
+//         `;
+//       } else {
+//         box.innerHTML = `<p style="color: red;">Error: ${result.error || 'Unknown error'}</p>`;
+//       }
+//     } catch (err) {
+//       document.getElementById("responseBox").innerHTML = `<p style="color: red;">Network or server error.</p>`;
+//     }
+//   });
+//}
 
 
 

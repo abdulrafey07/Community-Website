@@ -30,7 +30,7 @@
 </html> -->
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -88,5 +88,37 @@
       }
     });
   </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post a Complaint</title>
+  <link rel="stylesheet" href="resolve.css" />
+</head>
+<body>
+  <section class="feedback-section">
+    <h2>Post a Complaint</h2>
+    <form class="resolve-form" id="complaintForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your name" required />
+
+      <label for="number">Ph. Number</label>
+      <input type="number" id="number" placeholder="Your Number" required />
+
+      <label for="message">Complaint</label>
+      <textarea id="message" placeholder="Post your complaint here.." rows="4" required></textarea>
+
+      <button type="submit">Submit Complaint</button>
+    </form>
+
+    <div id="responseBox" style="margin-top: 20px; text-align: center;"></div>
+  </section>
+
+  <!-- Link to your external JavaScript file -->
+  <script src="script.js"></script>
 </body>
 </html>
