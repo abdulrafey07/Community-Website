@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>All Feedbacks</title>
 </head>
-<body>
-  <h1>All User Feedbacks</h1>
-  <% if (feedbackList.length === 0) { %>
+<body style="background-color: #c1c0d8;">
+  <h1 style="text-align: center;">All User Feedbacks</h1>
+  <hr>
+
+
+ <div style="text-align: center;">
+    <% if (feedbackList.length === 0) { %>
     <p>No feedbacks submitted yet.</p>
-  <% } else { %>
+  <% }
+  </div>
+  
+  else { %>
+   <div style="text-align: center;">
     <ul>
       <% feedbackList.forEach(feedback => { %>
         <li>
@@ -21,6 +29,9 @@
         </li>
       <% }) %>
     </ul>
+    </div>
   <% } %>
 </body>
 </html>
+
+
