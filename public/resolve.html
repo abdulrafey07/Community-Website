@@ -91,7 +91,7 @@
 </body>
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -118,7 +118,76 @@
     <div id="responseBox" style="margin-top: 20px; text-align: center;"></div>
   </section>
 
-  <!-- Link to your external JavaScript file -->
-  <script src="script.js"></script>
+  Link to your external JavaScript file -->
+  <!-- <script src="script.js"></script>
+</body>
+</html> --> 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Complaint</title>
+  <link rel="stylesheet" href="resolve.css">
+</head>
+<body>
+  <section class="feedback-section">
+    <h2>Post a Complaint</h2>
+    <form class="feedback-form" id="complaintForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your name" required />
+
+      <label for="number">Ph. Number</label>
+      <input type="number" id="number" placeholder="Your Number" required />
+
+      <label for="message">Complaint</label>
+      <textarea id="message" placeholder="Post your complaint here.." rows="4" required></textarea>
+
+      <button type="submit">Submit Complaint</button>
+    </form>
+
+    <div id="responseBox" style="margin-top: 20px; text-align: center;"></div>
+  </section>
+
+  <script>
+    document.getElementById("complaintForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const contact = document.getElementById("number").value;
+      const description = document.getElementById("message").value;
+
+      try {
+        const response = await fetch("https://community-website-gch9.onrender.com/api/complaints", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name, contact, description })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          document.getElementById("responseBox").innerHTML = `
+            <p style="color: green;"><strong>✅ Complaint submitted!</strong></p>
+            <p><strong>Ticket ID:</strong> ${result.ticketId}</p>
+            <img src="${result.qrCode}" alt="QR Code" style="width: 150px; margin-top: 10px;" />
+          `;
+        } else {
+          document.getElementById("responseBox").innerHTML = `
+            <p style="color: red;">❌ Error: ${result.error || 'Unknown server error'}</p>
+          `;
+        }
+      } catch (error) {
+        console.error("Network error:", error);
+        document.getElementById("responseBox").innerHTML = `
+          <p style="color: red;">❌ Network error. Could not connect to backend.</p>
+        `;
+      }
+    });
+  </script>
 </body>
 </html>
