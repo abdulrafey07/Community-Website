@@ -42,3 +42,8 @@ app.listen(port, () => {
     console.log("server running on local host http://localhost:3000");
 });
 
+
+
+// Database connection
+
+
