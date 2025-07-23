@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #20456B;
+    }
+
+    .event {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+    }
+
+    .event:last-child {
+      border-bottom: none;
+    }
+
+    .event h2 {
+      margin: 0 0 10px;
+      color: #3651a7;
+    }
+
+    .event p {
+      margin: 5px 0;
+      color: #333;
+    }
+
+    .event-date {
+      font-weight: bold;
+      color: #20456B;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: #20456B;
+      color: white;
+      border-radius: 6px;
+    }
+
+    .back-btn:hover {
+      background-color: #3651a7;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+
+      .event h2 {
+        font-size: 18px;
+      }
+
+      .event-date {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Community Notices & Events</h1>
+
+    <% if (events.length === 0) { %>
+      <p>No events available right now. Check back soon!</p>
+    <% } else { %>
+      <% events.forEach(event => { %>
+        <div class="event">
+          <h2><%= event.title %></h2>
+          <p class="event-date">📅 <%= event.event_date.toDateString() %> at <%= event.event_time ? event.event_time.slice(0,5) : "TBA" %></p>
+          <% if (event.location) { %><p>📍 <%= event.location %></p><% } %>
+          <% if (event.description) { %><p><%= event.description %></p><% } %>
+        </div>
+      <% }) %>
+    <% } %>
+
+    <a href="https://community-website-fawn.vercel.app/events.html" class="back-btn">Add New Notice / Event </a>
+  </div>
+</body>
+</html>

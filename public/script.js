@@ -7,7 +7,7 @@ document.querySelectorAll(".op").forEach((box)=> {
     });
 });
 
-document.querySelectorAll(".twobtns").forEach((btn) => {
+document.querySelectorAll(".twobtns button").forEach((btn) => {
     btn.addEventListener("click", ()=>{
         const link = btn.getAttribute("data-link");
         if(link){

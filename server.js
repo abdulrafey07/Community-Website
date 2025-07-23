@@ -45,5 +45,50 @@ app.listen(port, () => {
 
 
 // Database connection
+const mysql = require("mysql");
+const db = mysql.createConnection({
+  host:"localhost",
+  user:"root",
+  password: "MySQL@123",
+  database:"Community",
+});
+
+db.connect((err)=> {
+  if(err){
+    console.error("MySQL Connection Error: ", err);
+  }
+
+  else{
+    console.log("MySQL Connected");
+  }
+})
+
+app.post("/add-event", (req, res) => {
+  const {title, description, date, time , location} = req.body;
+  const query = "INSERT INTO events (title, description, date, time, location) VALUES (?, ?, ?, ?, ?)";
+
+  db.query(query, [title, description, date, time, location], (err, result)=> {
+    if(err){
+      throw err;
+    }
+
+    else{
+      console.log("Event Added Successfully");
+      res.redirect("/events");
+    }
+  });
+});
+
+
+app.get("/events", (req, res) => {
+  db.query("SELECT * FROM events ORDER BY date DESC, time DESC", (err, result)=> {
+    if(err) throw err;
+    res.render("events.ejs", {events: result});
+  });
+});
+
+
+
+
 
 
