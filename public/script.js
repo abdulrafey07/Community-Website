@@ -7,6 +7,15 @@ document.querySelectorAll(".op").forEach((box)=> {
     });
 });
 
+document.querySelectorAll(".twobtns").forEach((btn) => {
+    btn.addEventListener("click", ()=>{
+        const link = btn.getAttribute("data-link");
+        if(link){
+            window.location.href = link;
+        }
+    });
+});
+
 
 document.querySelectorAll(".nav-links li").forEach((e) => {
     e.addEventListener("click", ()=> {
