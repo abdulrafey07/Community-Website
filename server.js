@@ -50,7 +50,7 @@ const db = mysql.createConnection({
   host:"interchange.proxy.rlwy.net",
   user:"48835",
   password: "jRINWnSdiuGTGynJLcGdvSdmTsRbogGb",
-  database:"CommunityEvents",
+  database:"Railway",
 });
 
 db.connect((err)=> {
