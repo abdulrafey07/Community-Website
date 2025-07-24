@@ -47,10 +47,10 @@ app.listen(port, () => {
 // Database connection
 const mysql = require("mysql");
 const db = mysql.createConnection({
-  host:"localhost",
-  user:"root",
-  password: "MySQL@123",
-  database:"Community",
+  host:"interchange.proxy.rlwy.net",
+  user:"48835",
+  password: "jRINWnSdiuGTGynJLcGdvSdmTsRbogGb",
+  database:"CommunityEvents",
 });
 
 db.connect((err)=> {
