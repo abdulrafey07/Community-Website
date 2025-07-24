@@ -45,12 +45,18 @@ app.listen(port, () => {
 
 
 // Database connection
+require('dotenv').config();
 const mysql = require("mysql");
 const db = mysql.createConnection({
-  host:"interchange.proxy.rlwy.net",
-  user:"48835",
-  password: "jRINWnSdiuGTGynJLcGdvSdmTsRbogGb",
-  database:"railway",
+  // host:"interchange.proxy.rlwy.net",
+  // user:"48835",
+  // password: "jRINWnSdiuGTGynJLcGdvSdmTsRbogGb",
+  // database:"railway",
+  host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
 });
 
 db.connect((err)=> {
