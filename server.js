@@ -80,7 +80,8 @@ app.post("/add-event", (req, res) => {
 });
 
 
-app.get("/events", (req, res) => {
+app.get("/add-event", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "events.html"));
   db.query("SELECT * FROM events ORDER BY date DESC, time DESC", (err, result)=> {
     if(err) throw err;
     res.render("events.ejs", {events: result});
