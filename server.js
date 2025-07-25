@@ -46,7 +46,7 @@ app.listen(port, () => {
 
 // Database connection
 
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const db = mysql.createConnection({
   // host:"yamanote.proxy.rlwy.net",
   // user:"52",
