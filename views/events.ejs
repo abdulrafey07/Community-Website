@@ -89,7 +89,8 @@
       <% events.forEach(event => { %>
         <div class="event">
           <h2><%= event.title %></h2>
-          <p class="event-date">📅 <%= event.event_date.toDateString() %> at <%= event.event_time ? event.event_time.slice(0,5) : "TBA" %></p>
+           <p class="event-date">📅 <%= new Date(event.date).toDateString() %> at <%= event.time ? event.time.slice(0,5) : "TBA" %></p>
+
           <% if (event.location) { %><p>📍 <%= event.location %></p><% } %>
           <% if (event.description) { %><p><%= event.description %></p><% } %>
         </div>

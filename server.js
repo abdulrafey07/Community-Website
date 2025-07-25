@@ -45,18 +45,19 @@ app.listen(port, () => {
 
 
 // Database connection
-require('dotenv').config();
+
 const mysql = require("mysql");
 const db = mysql.createConnection({
-  // host:"interchange.proxy.rlwy.net",
-  // user:"48835",
-  // password: "jRINWnSdiuGTGynJLcGdvSdmTsRbogGb",
+  // host:"yamanote.proxy.rlwy.net",
+  // user:"52",
+  // password: "nrxAWFSNdPaFIVUvbocMbXGcmhvFDAfQ",
   // database:"railway",
-  host: process.env.MYSQLHOST,
-  port: process.env.MYSQLPORT,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
+  host: "yamanote.proxy.rlwy.net",   // from your public URL
+  user: "root",                       // from your connection URL
+  password: "nrxAWFSNdPaFIVUvbocMbXGcmhvFDAfQ",     // paste it from Railway (click "show")
+  database: "railway",                // from the connection string
+  port: 52770  
+
 });
 
 db.connect((err)=> {
@@ -74,9 +75,10 @@ app.post("/add-event", (req, res) => {
   const query = "INSERT INTO events (title, description, date, time, location) VALUES (?, ?, ?, ?, ?)";
 
   db.query(query, [title, description, date, time, location], (err, result)=> {
-    if(err){
-      throw err;
-    }
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Server error");
+}
 
     else{
       console.log("Event Added Successfully");
@@ -86,13 +88,28 @@ app.post("/add-event", (req, res) => {
 });
 
 
+// app.get("/add-event", (req, res) => {
+//   res.sendFile(path.join(__dirname, "public", "events.html"));
+//   db.query("SELECT * FROM events ORDER BY date DESC, time DESC", (err, result)=> {
+//     if(err) throw err;
+//     res.render("events.ejs", {events: result});
+//   });
+// });
+
+
+// Show form
 app.get("/add-event", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "events.html"));
+});
+
+// Show all events
+app.get("/events", (req, res) => {
   db.query("SELECT * FROM events ORDER BY date DESC, time DESC", (err, result)=> {
     if(err) throw err;
-    res.render("events.ejs", {events: result});
+    res.render("events.ejs", { events: result });
   });
 });
+
 
 
 
