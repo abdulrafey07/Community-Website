@@ -10,7 +10,7 @@ body {
   height: 50vh;
 }
 
-/* Navbar */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -25,14 +25,13 @@ body {
   z-index: 1000;
 }
 
-/* Logo */
+
 .logo {
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* Nav Links */
 .nav-links {
   list-style: none;
   display: flex;
@@ -49,10 +48,9 @@ body {
 }
 
 .nav-links li:hover {
-  color: #cbd5e1; /* Soft hover */
+  color: #cbd5e1; 
 }
 
-/* Login Button */
 .loginBtn .login {
   background-color: #3651a7;
   color: white;
@@ -118,7 +116,6 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    /* align-items: center; */
     gap: 10% 0%;
     background-color: rgb(252, 251, 251);
 }
@@ -153,15 +150,7 @@ body{
     flex-direction: column;
 }
 
-/* .sec1, .sec2{
-    flex: 1;
-} */
 
-/* .main{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-} */
 
 .main{
     margin-bottom: 10%;
@@ -185,4 +174,4 @@ body{
     font-size: 0.8rem;
     margin-left: 6%;
     cursor: pointer;
-}
+} 
